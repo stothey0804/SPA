@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>star test</title>
+    <link rel="stylesheet" href="style/star.css">
+</head>
+<body>
+    <div class="container">
+        <div class="review-wrap">
+            <div class="star-wrap"><span class="star-fill" data-rating="1.5"></span></div>
+        </div>
+        <div class="review-wrap">
+            <div class="star-wrap"><span class="star-fill" data-rating="4.5"></span></div>
+        </div>
+        <div class="review-wrap">
+            <div class="star-wrap"><span class="star-fill" data-rating="4.0"></span></div>
+        </div>
+        <div class="review-wrap">
+            <div class="star-wrap"><span class="star-fill" data-rating="3.2"></span></div>
+        </div>
+    </div>
+</body>
+<script>
+    window.onload = () => {
+        const star_list = document.querySelectorAll('.star-fill');
+        star_list.forEach(element => {
+            fillStar(element, element.dataset.rating);
+            addLabel(element, element.dataset.rating);
+        });
+    }
+
+    const addLabel = (elem, rating) => {
+        const label = `<div class="star-label">${rating}</div>`;
+        elem.parentNode.parentNode.innerHTML += label;
+    }
+
+    const fillStar = (elem, rating) => {
+        const rating_ratio = (rating / 5.0);
+        elem.setAttribute('style', `width: calc(100% * ${rating_ratio})`);
+    }
+
+</script>
+</html>
